@@ -5,6 +5,8 @@ public class Counter {
         if (sentence == null) {
             throw new IllegalArgumentException("sentence cannot be null");
         }
+        sentence = sentence.trim();
+
         return sentence.trim().isEmpty() ? 0 : sentence.split("\\s+").length;
     }
 }

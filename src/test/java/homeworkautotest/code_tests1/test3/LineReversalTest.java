@@ -35,7 +35,7 @@ public class LineReversalTest {
 
     @Test
     public void nullCase() {
-        assertNull(null, lineReversal.reverse(null));
+        assertNull(lineReversal.reverse(null));
     }
 
 }

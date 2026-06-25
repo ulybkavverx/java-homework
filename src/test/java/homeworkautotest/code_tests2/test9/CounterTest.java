@@ -27,15 +27,17 @@ public class CounterTest {
     public void ordinaryString() {
         assertEquals(2, counter.countWords("Hello world"));
     }
+
     @Test
     public void stringWithExtraSpaces() {
-        assertEquals(4, counter.countWords(" Java is awesome "));
+        assertEquals(3, counter.countWords(" Java is awesome "));
     }
 
     @Test
     public void emptyString() {
         assertEquals(0, counter.countWords(""));
     }
+
     @Test
     public void severalSpaces() {
         assertEquals(0, counter.countWords(" "));
