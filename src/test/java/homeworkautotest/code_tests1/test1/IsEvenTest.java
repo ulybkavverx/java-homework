@@ -27,6 +27,7 @@ public class IsEvenTest {
      */
     @Test
     public void checkingPositiveEvenNumbers() {
+
         assertTrue(parityCheck.isEven(2));
     }
 
