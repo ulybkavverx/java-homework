@@ -3,6 +3,7 @@ package practice_autotesting.task6;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -21,7 +22,7 @@ public class TaskServiceTest {
         Task<Integer> task = new Task<>(1,
                 Status.NEW,
                 Priority.LOW,
-                "2026-08-17");
+                LocalDateTime.of(2026,8, 19,10,30));
 
         taskService.addTask(task);
 
@@ -35,14 +36,14 @@ public class TaskServiceTest {
                 1,
                 Status.IN_PROGRESS,
                 Priority.HIGH,
-                "2026-08-20"
+                LocalDateTime.of(2026,8, 19,10,30)
         );
 
         Task<Integer> task2 = new Task<>(
                 2,
                 Status.IN_PROGRESS,
                 Priority.LOW,
-                "2026-08-17"
+                LocalDateTime.of(2026,8, 19,10,30)
         );
 
         taskService.addTask(task1);
@@ -51,6 +52,7 @@ public class TaskServiceTest {
         taskService.removeTask(2);
 
         assertEquals(List.of(task1), taskService.findByPriority(Priority.HIGH));
+        assertEquals(List.of(), taskService.findByPriority(Priority.LOW));
     }
 
     // removeTask(): удаление задачи по ID (удалить НЕсущ задачу)
@@ -68,21 +70,21 @@ public class TaskServiceTest {
                 1,
                 Status.IN_PROGRESS,
                 Priority.MEDIUM,
-                "2026-08-20"
+                LocalDateTime.of(2026,8, 19,10,30)
         );
 
         Task<Integer> task2 = new Task<>(
                 2,
                 Status.NEW,
                 Priority.MEDIUM,
-                "2026-08-21"
+                LocalDateTime.of(2026,8, 19,10,30)
         );
 
         Task<Integer> task3 = new Task<>(
                 3,
                 Status.NEW,
                 Priority.MEDIUM,
-                "2026-08-21"
+                LocalDateTime.of(2026,8, 19,10,30)
         );
 
         taskService.addTask(task1);
@@ -101,7 +103,7 @@ public class TaskServiceTest {
                 1,
                 Status.NEW,
                 Priority.MEDIUM,
-                "2026-08-21"
+                LocalDateTime.of(2026,8, 19,10,30)
         );
 
         taskService.addTask(task);
@@ -118,21 +120,21 @@ public class TaskServiceTest {
                 1,
                 Status.IN_PROGRESS,
                 Priority.MEDIUM,
-                "2026-08-20"
+                LocalDateTime.of(2026,8, 19,10,30)
         );
 
         Task<Integer> task2 = new Task<>(
                 2,
                 Status.NEW,
                 Priority.LOW,
-                "2026-08-21"
+                LocalDateTime.of(2026,8, 19,10,30)
         );
 
         Task<Integer> task3 = new Task<>(
                 3,
                 Status.NEW,
                 Priority.MEDIUM,
-                "2026-08-21"
+                LocalDateTime.of(2026,8, 19,10,30)
         );
 
         taskService.addTask(task1);
@@ -151,7 +153,7 @@ public class TaskServiceTest {
                 1,
                 Status.NEW,
                 Priority.MEDIUM,
-                "2026-08-21"
+                LocalDateTime.of(2026,8, 19,10,30)
         );
 
         taskService.addTask(task);
@@ -168,21 +170,21 @@ public class TaskServiceTest {
                 1,
                 Status.IN_PROGRESS,
                 Priority.MEDIUM,
-                "2026-08-20"
+                LocalDateTime.of(2026,8, 20,10,30)
         );
 
         Task<Integer> task2 = new Task<>(
                 2,
                 Status.NEW,
                 Priority.LOW,
-                "2026-08-10"
+                LocalDateTime.of(2026,8, 10,10,30)
         );
 
         Task<Integer> task3 = new Task<>(
                 3,
                 Status.NEW,
                 Priority.MEDIUM,
-                "2026-08-30"
+                LocalDateTime.of(2026,8, 30,10,30)
         );
 
         taskService.addTask(task1);

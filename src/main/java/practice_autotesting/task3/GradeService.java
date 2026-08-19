@@ -15,7 +15,7 @@ public class GradeService<T extends Number> {
 
     // метод для добавления оценки потокобезопасно, валидация на отрицательную оценку
     public synchronized void addGrade(StudentGrade<T> grade) {
-        if (grade.getGrade().intValue() < 0) {
+        if (grade.getGrade().doubleValue() < 0) {
             throw new InvalidGradeException("Grade cannot be negative");
         }
 
@@ -23,7 +23,7 @@ public class GradeService<T extends Number> {
     }
 
     // метод для расчета среднего значения оценок по конкретному предмету (сумма всех оценок / кол-во оценок)
-    public double averageGradeBySubject(String subject) {
+    public synchronized double averageGradeBySubject(String subject) {
         double sum = 0;
         int count = 0;
 
@@ -32,6 +32,10 @@ public class GradeService<T extends Number> {
                 sum += grade.getGrade().doubleValue();
                 count++;
             }
+        }
+
+        if (count == 0) {
+            return 0;
         }
 
         return sum / count;

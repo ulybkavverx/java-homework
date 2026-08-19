@@ -23,7 +23,7 @@ public class InventoryService {
     private final Map<String, List<Product>> products = new HashMap<>();
 
     // метод добавления товара, если isInventoryOpen равен false, оп-ция не должна выполняться
-    public void addProduct(Product product) {
+    public synchronized void addProduct(Product product) {
 
         if (!isInventoryOpen) {
             return;
@@ -39,17 +39,17 @@ public class InventoryService {
     }
 
     // метод получения товара по категории, если нет товара в указанной категории - OutOfStockException
-    public Product getProduct(String category) {
+    public synchronized Product getProduct(String category) {
 
         List<Product> categoryProducts = products.get(category);
         if (categoryProducts == null || categoryProducts.isEmpty()) {
             throw new OutOfStockException("The product is out of stock");
         }
-        return categoryProducts.getFirst();
+        return categoryProducts.removeFirst();
     }
 
     // метод для поиска товара по категории
-    public List<Product> findProductByCategory(String category) {
+    public synchronized List<Product> findProductByCategory(String category) {
         return products.values()
                 .stream()
                 .flatMap(List::stream)
@@ -58,11 +58,11 @@ public class InventoryService {
     }
 
     // фильтрация товаров по цене
-    public List<Product> findProductByPrice(double price) {
+    public synchronized List<Product> findProductByPrice(double price) {
         return products.values()
                 .stream()
                 .flatMap(List::stream)
-                .filter(product -> product.getPrice() <= price)
+                .filter(product -> product.getPrice() >= price)
                 .toList();
     }
 }

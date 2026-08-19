@@ -1,12 +1,14 @@
 package practice_autotesting.task6;
 
+import java.time.LocalDateTime;
+
 public class Task<T> {
     private final T ID;
     private final Status status;
     private final Priority priority;
-    private final String date;
+    private final LocalDateTime date;
 
-    public Task(T ID, Status status, Priority priority, String date) {
+    public Task(T ID, Status status, Priority priority, LocalDateTime date) {
         this.ID = ID;
         this.status = status;
         this.priority = priority;
@@ -25,7 +27,7 @@ public class Task<T> {
         return priority;
     }
 
-    public String getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 }

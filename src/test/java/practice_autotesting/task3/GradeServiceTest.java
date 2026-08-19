@@ -83,5 +83,4 @@ public class GradeServiceTest {
 
         assertEquals(0, gradeService.averageGradeBySubject("Math"));
     }
-
 }

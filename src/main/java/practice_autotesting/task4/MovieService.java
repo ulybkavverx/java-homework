@@ -31,6 +31,10 @@ public class MovieService {
 
         List<Rating<? extends Number>> movieRatings = ratings.get(movie);
 
+        if (movieRatings == null) {
+            return 0;
+        }
+
         return movieRatings.stream()
                 .mapToDouble(rating -> rating.getRating().doubleValue())
                 .average()
