@@ -4,6 +4,10 @@ public class Base62Strategy implements ShorteningStrategy {
 
     @Override
     public String shorten(String longUrl) {
-        return "abc123";
+        // получение hash конкретного url
+        int hash = longUrl.hashCode();
+
+        // преобразуем число в строку
+        return String.valueOf(hash);
     }
 }
