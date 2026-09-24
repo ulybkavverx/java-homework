@@ -21,21 +21,22 @@ public class BookProxy implements BookAccess {
         this.author = author;
     }
 
-    // ленивая зашгрузка
+    // ленивая загрузка
     public void loadBook() {
         if (realBook == null) {
-            System.out.println("Загружаем книгу: "  + title);
+            System.out.println("Загружаем книгу: " + title);
+
+
+            Book book = new BookBuilder()
+                    .setTitle(title)
+                    .setCover(cover)
+                    .setDescription(description)
+                    .setContent(content)
+                    .setAuthor(author)
+                    .build();
+
+            realBook = new RealBook(book);
         }
-
-        Book book = new BookBuilder()
-                .setTitle(title)
-                .setCover(cover)
-                .setDescription(description)
-                .setContent(content)
-                .setAuthor(author)
-                .build();
-
-        realBook = new RealBook(book);
     }
 
     @Override
